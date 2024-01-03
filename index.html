@@ -1,0 +1,83 @@
+/*
+List of Tables:
+-Movies
+-Media
+-Genres
+-MovieGenres
+-Review
+-Users
+-Artists
+-Skills
+-Roles
+-MovieArtist 
+
+
+Movies:
+MovieID (Primary Key)
+Title
+ReleaseDate
+Description
+
+Media:
+MediaID (Primary Key)
+MovieID (Foreign Key to Movies)
+MediaType (Video/Image)
+MediaURL
+
+Genres:
+GenreID (Primary Key)
+GenreName
+
+MovieGenres:
+MovieID (Foreign Key to Movies)
+GenreID (Foreign Key to Genres)
+(Composite Primary Key: MovieID, GenreID)
+
+Reviews:
+ReviewID (Primary Key)
+MovieID (Foreign Key to Movies)
+UserID (Foreign Key to Users)
+Rating
+ReviewText
+Timestamp
+
+Users:
+UserID (Primary Key)
+UserName
+Email
+Password
+... (other user details)
+
+Artists:
+ArtistID (Primary Key)
+ArtistName
+
+Skills:
+SkillID (Primary Key)
+SkillName
+
+ArtistSkills:
+ArtistID (Foreign Key to Artists)
+SkillID (Foreign Key to Skills)
+(Composite Primary Key: ArtistID, SkillID)
+
+Roles:
+RoleID (Primary Key)
+RoleName
+
+MovieArtists:
+MovieID (Foreign Key to Movies)
+ArtistID (Foreign Key to Artists)
+RoleID (Foreign Key to Roles)
+
+
+
+Relationships:
+Movies have a one-to-many relationship with Media (one movie can have multiple media).
+Movies have a many-to-many relationship with Genres through the MovieGenres junction table.
+Movies have a one-to-many relationship with Reviews (one movie can have multiple reviews).
+Reviews have a many-to-one relationship with Users (multiple reviews can belong to one user).
+Artists have a many-to-many relationship with Skills through the ArtistSkills junction table.
+Movies have a many-to-many relationship with Artists through the MovieArtists junction table. This relationship includes the roles an artist performs in a movie.
+This schema allows for the representation of movies, their associated media, genres, reviews by users, artists with their skills, and the roles they play in movies. ForeignKey constraints ensure data integrity and relationships between tables.
+*/
